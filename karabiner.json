@@ -6,6 +6,7 @@
     {
       "name": "Default",
       "complex_modifications": {
+        "parameters": {},
         "rules": [
           {
             "description": "Hyper Key (⌃⌥⇧⌘)",
