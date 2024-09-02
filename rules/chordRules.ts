@@ -1,7 +1,7 @@
-import { KarabinerRules } from "../types";
+import { Rule } from "../types";
 import { karabinerRule, chordManipulator } from "../utils";
 
-export const chordRules: KarabinerRules[] = [
+export const chordRules: Rule[] = [
   karabinerRule("DF JK -> Control", [
     chordManipulator("DF to Control", ["d", "f"], "left_control"),
     chordManipulator("JK to Control", ["j", "k"], "right_control")

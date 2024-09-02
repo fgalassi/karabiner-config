@@ -1,4 +1,4 @@
-import { To, KeyCode, Manipulator, KarabinerRules, ModifiersKeys } from "./types";
+import { To, KeyCode, Manipulator, Rule, ModifiersKeys } from "./types";
 
 /**
  * Custom way to describe a command in a layer
@@ -13,7 +13,7 @@ type HyperKeySublayer = {
   [key_code in KeyCode]?: LayerCommand;
 };
 
-export function karabinerRule(description: string, manipulators: Manipulator[]): KarabinerRules {
+export function karabinerRule(description: string, manipulators: Manipulator[]): Rule {
   return {
     description: description,
     manipulators: manipulators
@@ -135,7 +135,7 @@ export function createHyperSubLayer(
  */
 export function createHyperSubLayers(subLayers: {
   [key_code in KeyCode]?: HyperKeySublayer | LayerCommand;
-}): KarabinerRules[] {
+}): Rule[] {
   const allSubLayerVariables = (
     Object.keys(subLayers) as (keyof typeof subLayers)[]
   ).map((sublayer_key) => generateSubLayerVariableName(sublayer_key));

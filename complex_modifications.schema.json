@@ -1,0 +1,416 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "KarabinerComplexModifications",
+  "type": "object",
+  "properties": {
+    "parameters": {
+      "type": "object"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Rule"
+      }
+    }
+  },
+  "required": ["rules"],
+  "$defs": {
+    "Rule": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "manipulators": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Manipulator"
+          }
+        }
+      },
+      "required": ["manipulators"]
+    },
+    "Manipulator": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "const": "basic"
+        },
+        "from": {
+          "$ref": "#/$defs/From"
+        },
+        "to": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/To"
+          }
+        },
+        "to_after_key_up": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/To"
+          }
+        },
+        "to_if_alone": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/To"
+          }
+        },
+        "parameters": {
+          "$ref": "#/$defs/Parameters"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Condition"
+          }
+        }
+      },
+      "required": ["type", "from"]
+    },
+    "From": {
+      "type": "object",
+      "properties": {
+        "key_code": {
+          "$ref": "#/$defs/KeyCode"
+        },
+        "simultaneous": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SimultaneousFrom"
+          }
+        },
+        "simultaneous_options": {
+          "$ref": "#/$defs/SimultaneousOptions"
+        },
+        "modifiers": {
+          "$ref": "#/$defs/Modifiers"
+        }
+      }
+    },
+    "To": {
+      "type": "object",
+      "properties": {
+        "key_code": {
+          "$ref": "#/$defs/KeyCode"
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ModifiersKeys"
+          }
+        },
+        "shell_command": {
+          "type": "string"
+        },
+        "set_variable": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": ["boolean", "number", "string"]
+            }
+          },
+          "required": ["name", "value"]
+        },
+        "mouse_key": {
+          "$ref": "#/$defs/MouseKey"
+        },
+        "pointing_button": {
+          "type": "string"
+        },
+        "software_function": {
+          "$ref": "#/$defs/SoftwareFunction"
+        }
+      }
+    },
+    "Parameters": {
+      "type": "object",
+      "properties": {
+        "basic.simultaneous_threshold_milliseconds": {
+          "type": "number"
+        }
+      }
+    },
+    "Condition": {
+      "oneOf": [
+        { "$ref": "#/$defs/FrontMostApplicationCondition" },
+        { "$ref": "#/$defs/DeviceCondition" },
+        { "$ref": "#/$defs/KeyboardTypeCondition" },
+        { "$ref": "#/$defs/InputSourceCondition" },
+        { "$ref": "#/$defs/VariableCondition" },
+        { "$ref": "#/$defs/EventChangedCondition" }
+      ]
+    },
+    "FrontMostApplicationCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["frontmost_application_if", "frontmost_application_unless"]
+        },
+        "bundle_identifiers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "file_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["type"]
+    },
+    "DeviceCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["device_if", "device_unless", "device_exists_if", "device_exists_unless"]
+        },
+        "identifiers": {
+          "$ref": "#/$defs/Identifiers"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "identifiers"]
+    },
+    "KeyboardTypeCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["keyboard_type_if", "keyboard_type_unless"]
+        },
+        "keyboard_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "keyboard_types"]
+    },
+    "InputSourceCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["input_source_if", "input_source_unless"]
+        },
+        "input_sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/InputSource"
+          }
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "input_sources"]
+    },
+    "VariableCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["variable_if", "variable_unless"]
+        },
+        "name": {
+          "type": ["string", "number", "boolean"]
+        },
+        "value": {
+          "type": ["string", "number"]
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "name", "value"]
+    },
+    "EventChangedCondition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["event_changed_if", "event_changed_unless"]
+        },
+        "value": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["type", "value"]
+    },
+    "SimultaneousFrom": {
+      "type": "object",
+      "properties": {
+        "key_code": {
+          "$ref": "#/$defs/KeyCode"
+        }
+      },
+      "required": ["key_code"]
+    },
+    "SimultaneousOptions": {
+      "type": "object",
+      "properties": {
+        "key_down_order": {
+          "enum": ["insensitive", "strict", "strict_inverse"]
+        },
+        "detect_key_down_uninterruptedly": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Modifiers": {
+      "type": "object",
+      "properties": {
+        "optional": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ModifiersKeys"
+          }
+        },
+        "mandatory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ModifiersKeys"
+          }
+        }
+      }
+    },
+    "MouseKey": {
+      "type": "object",
+      "properties": {
+        "y": {
+          "type": "number"
+        },
+        "x": {
+          "type": "number"
+        },
+        "speed_multiplier": {
+          "type": "number"
+        },
+        "vertical_wheel": {
+          "type": "number"
+        },
+        "horizontal_wheel": {
+          "type": "number"
+        }
+      }
+    },
+    "SoftwareFunction": {
+      "type": "object",
+      "properties": {
+        "iokit_power_management_sleep_system": {
+          "type": "object"
+        }
+      }
+    },
+    "Identifiers": {
+      "type": "object",
+      "properties": {
+        "vendor_id": {
+          "type": "number"
+        },
+        "product_id": {
+          "type": "number"
+        },
+        "location_id": {
+          "type": "number"
+        },
+        "is_keyboard": {
+          "type": "boolean"
+        },
+        "is_pointing_device": {
+          "type": "boolean"
+        },
+        "is_touch_bar": {
+          "type": "boolean"
+        },
+        "is_built_in_keyboard": {
+          "type": "boolean"
+        }
+      }
+    },
+    "InputSource": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "input_source_id": {
+          "type": "string"
+        },
+        "input_mode_id": {
+          "type": "string"
+        }
+      }
+    },
+    "KeyCode": {
+      "type": "string",
+      "enum": [
+        "caps_lock", "left_control", "left_shift", "left_option", "left_command",
+        "right_control", "right_shift", "right_option", "right_command", "fn",
+        "return_or_enter", "escape", "delete_or_backspace", "delete_forward", "tab",
+        "spacebar", "hyphen", "equal_sign", "open_bracket", "close_bracket",
+        "backslash", "non_us_pound", "semicolon", "quote", "grave_accent_and_tilde",
+        "comma", "period", "slash", "non_us_backslash", "up_arrow", "down_arrow",
+        "left_arrow", "right_arrow", "page_up", "page_down", "home", "end",
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
+        "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+        "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12",
+        "f13", "f14", "f15", "f16", "f17", "f18", "f19", "f20", "f21", "f22", "f23", "f24",
+        "display_brightness_decrement", "display_brightness_increment", "mission_control",
+        "launchpad", "dashboard", "illumination_decrement", "illumination_increment",
+        "rewind", "play_or_pause", "fastforward", "mute", "volume_decrement",
+        "volume_increment", "eject", "apple_display_brightness_decrement",
+        "apple_display_brightness_increment", "apple_top_case_display_brightness_decrement",
+        "apple_top_case_display_brightness_increment", "keypad_num_lock", "keypad_slash",
+        "keypad_asterisk", "keypad_hyphen", "keypad_plus", "keypad_enter", "keypad_1",
+        "keypad_2", "keypad_3", "keypad_4", "keypad_5", "keypad_6", "keypad_7",
+        "keypad_8", "keypad_9", "keypad_0", "keypad_period", "keypad_equal_sign",
+        "keypad_comma", "vk_none", "print_screen", "scroll_lock", "pause", "insert",
+        "application", "help", "power", "execute", "menu", "select", "stop", "again",
+        "undo", "cut", "copy", "paste", "find", "international1", "international2",
+        "international3", "international4", "international5", "international6",
+        "international7", "international8", "international9", "lang1", "lang2",
+        "lang3", "lang4", "lang5", "lang6", "lang7", "lang8", "lang9",
+        "japanese_eisuu", "japanese_kana", "japanese_pc_nfer", "japanese_pc_xfer",
+        "japanese_pc_katakana", "keypad_equal_sign_as400", "locking_caps_lock",
+        "locking_num_lock", "locking_scroll_lock", "alternate_erase",
+        "sys_req_or_attention", "cancel", "clear", "prior", "return", "separator",
+        "out", "oper", "clear_or_again", "cr_sel_or_props", "ex_sel", "left_alt",
+        "left_gui", "right_alt", "right_gui", "vk_consumer_brightness_down",
+        "vk_consumer_brightness_up", "vk_mission_control", "vk_launchpad",
+        "vk_dashboard", "vk_consumer_illumination_down", "vk_consumer_illumination_up",
+        "vk_consumer_previous", "vk_consumer_play", "vk_consumer_next",
+        "volume_down", "volume_up"
+      ]
+    },
+    "ModifiersKeys": {
+      "type": "string",
+      "enum": [
+        "caps_lock", "left_command", "left_control", "left_option", "left_shift",
+        "right_command", "right_control", "right_option", "right_shift", "fn",
+        "command", "control", "option", "shift", "left_alt", "left_gui",
+        "right_alt", "right_gui", "any"
+      ]
+    }
+  }
+}

@@ -1,11 +1,11 @@
 import fs from "fs";
-import { KarabinerRules } from "./types";
+import { Rule } from "./types";
 import { createHyperSubLayers, app, open, rectangle, shell, karabinerRule, chordManipulator } from "./utils";
 import { hyperKeyRule } from "./rules/hyperKey";
 import { chordRules } from "./rules/chordRules";
 import { layerRules } from "./rules/layerRules";
 
-const rules: KarabinerRules[] = [
+const rules: Rule[] = [
   hyperKeyRule,
   ...chordRules,
   ...layerRules,

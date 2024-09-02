@@ -1,4 +1,9 @@
-export interface KarabinerRules {
+export interface ComplexModifications {
+  parameters?: Parameters;
+  rules: Rule[];
+}
+
+export interface Rule {
   description?: string;
   manipulators?: Manipulator[];
 }

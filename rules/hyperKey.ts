@@ -1,7 +1,7 @@
-import { KarabinerRules } from "../types";
+import { Rule } from "../types";
 import { karabinerRule } from "../utils";
 
-export const hyperKeyRule: KarabinerRules = karabinerRule("Hyper Key (⌃⌥⇧⌘)", [
+export const hyperKeyRule: Rule = karabinerRule("Hyper Key (⌃⌥⇧⌘)", [
   {
     description: "Caps Lock -> Hyper Key",
     from: {

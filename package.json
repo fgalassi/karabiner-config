@@ -5,13 +5,17 @@
   "author": "Max Stoiber <contact@mxstbr.com>",
   "license": "MIT",
   "devDependencies": {
+    "@sourcemeta/jsonschema": "^4.0.0",
     "@types/node": "^18.7.19",
+    "node-jq": "^6.0.1",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "tsm": "^2.2.2"
   },
   "scripts": {
     "build": "tsm rules.ts",
-    "watch": "nodemon --exec yarn build -e ts"
+    "watch": "nodemon --exec yarn build -e ts",
+    "validate": "npx node-jq '.profiles[] | select(.name == \"Default\") | .complex_modifications' karabiner.json > complex.json.tmp && npx jsonschema validate complex_modifications.schema.json complex.json.tmp && rm complex.json.tmp",
+    "build:validate": "yarn build && yarn validate"
   }
 }

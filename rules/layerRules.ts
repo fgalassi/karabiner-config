@@ -1,7 +1,7 @@
-import { KarabinerRules } from "../types";
+import { Rule } from "../types";
 import { createHyperSubLayers } from "../utils";
 
-export const layerRules: KarabinerRules[] = createHyperSubLayers({
+export const layerRules: Rule[] = createHyperSubLayers({
   v: {
     h: {
       to: [{ key_code: "left_arrow" }],
