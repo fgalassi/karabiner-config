@@ -47,6 +47,136 @@
             ]
           },
           {
+            "description": "SDF JKL -> Control + Option",
+            "manipulators": [
+              {
+                "description": "SDF to Control + Option",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "s"
+                    },
+                    {
+                      "key_code": "d"
+                    },
+                    {
+                      "key_code": "f"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "modifiers": [
+                      "left_option"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "JKL to Control + Option",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "j"
+                    },
+                    {
+                      "key_code": "k"
+                    },
+                    {
+                      "key_code": "l"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_control",
+                    "modifiers": [
+                      "right_option"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "ASD KL; -> Command + Option",
+            "manipulators": [
+              {
+                "description": "ASD to Command + Option",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "a"
+                    },
+                    {
+                      "key_code": "s"
+                    },
+                    {
+                      "key_code": "d"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "modifiers": [
+                      "left_option"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "description": "KL; to Command + Option",
+                "from": {
+                  "simultaneous": [
+                    {
+                      "key_code": "k"
+                    },
+                    {
+                      "key_code": "l"
+                    },
+                    {
+                      "key_code": "semicolon"
+                    }
+                  ],
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_command",
+                    "modifiers": [
+                      "right_option"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "DF JK -> Control",
             "manipulators": [
               {

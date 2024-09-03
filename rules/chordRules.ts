@@ -2,6 +2,16 @@ import { Rule } from "../types";
 import { karabinerRule, chordManipulator } from "../utils";
 
 export const chordRules: Rule[] = [
+  karabinerRule("SDF JKL -> Control + Option", [
+    chordManipulator("SDF to Control + Option", ["s", "d", "f"], "left_control", ["left_option"]),
+    chordManipulator("JKL to Control + Option", ["j", "k", "l"], "right_control", ["right_option"])
+  ]),
+
+  karabinerRule("ASD KL; -> Command + Option", [
+    chordManipulator("ASD to Command + Option", ["a", "s", "d"], "left_command", ["left_option"]),
+    chordManipulator("KL; to Command + Option", ["k", "l", "semicolon"], "right_command", ["right_option"])
+  ]),
+
   karabinerRule("DF JK -> Control", [
     chordManipulator("DF to Control", ["d", "f"], "left_control"),
     chordManipulator("JK to Control", ["j", "k"], "right_control")
