@@ -16,6 +16,7 @@
     "build": "tsm rules.ts",
     "watch": "nodemon --exec npm run build -e ts",
     "validate": "npx node-jq '.profiles[] | select(.name == \"Default\") | .complex_modifications' karabiner.json > complex.json.tmp && npx jsonschema validate complex_modifications.schema.json complex.json.tmp && rm complex.json.tmp",
-    "build:validate": "npm build && npm validate"
+    "build:validate": "npm build && npm validate",
+    "docs": "tsm printDocs.ts"
   }
 }

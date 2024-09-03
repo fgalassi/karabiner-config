@@ -2,6 +2,22 @@
 
 This is a fork of [mxstbr's karabiner](https://github.com/mxstbr/karabiner) that I use to customize my Karabiner Elements configuration.
 
+## Current Rules
+
+- Hyper Key (⌃⌥⇧⌘)
+- SDF JKL -> Control + Option
+- ASD KL; -> Command + Option
+- DF JK -> Control
+- SD KL -> Command
+- AS L; -> Option
+- ER UI -> Shift + Control
+- WE IO -> Shift + Command
+- QW OP -> Shift + Option
+- DC KM -> Shift
+- WR UO -> Delete
+- EF JI -> Escape
+- Hyper Key sublayer "v"
+
 ## Installation
 
 1. Install & start [Karabiner Elements](https://karabiner-elements.pqrs.org/)
@@ -45,6 +61,12 @@ npm run build:validate
 ```
 
 validates the `karabiner.json` configuration file and rebuilds it when there are no errors.
+
+```
+npm run docs
+```
+
+generates the documentation for the karabiner rules.
 
 ## License
 
