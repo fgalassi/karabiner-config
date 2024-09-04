@@ -32,37 +32,37 @@ The configuration is stored in `rules.ts` and consists of rule files imported fr
 
 ## Development
 
-```
+```sh
 npm install
 ```
 
 to install the dependencies. (one-time only)
 
-```
+```sh
 npm run build
 ```
 
 builds the `karabiner.json` from the `rules.ts`.
 
-```
+```sh
 npm run watch
 ```
 
 watches the TypeScript files and rebuilds whenever they change.
 
-```
+```sh
 npm run validate
 ```
 
 validates the `karabiner.json` configuration file against a json schema.
 
-```
+```sh
 npm run build:validate
 ```
 
 validates the `karabiner.json` configuration file and rebuilds it when there are no errors.
 
-```
+```sh
 npm run docs
 ```
 
