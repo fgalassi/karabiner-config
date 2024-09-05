@@ -1,4 +1,4 @@
-import { To, KeyCode, Manipulator, KarabinerRules } from "./types";
+import { To, KeyCode, Manipulator, KarabinerRules, ModifiersKeys } from "./types";
 
 /**
  * Custom way to describe a command in a layer
@@ -12,6 +12,36 @@ type HyperKeySublayer = {
   // The ? is necessary, otherwise we'd have to define something for _every_ key code
   [key_code in KeyCode]?: LayerCommand;
 };
+
+export function karabinerRule(description: string, manipulators: Manipulator[]): KarabinerRules {
+  return {
+    description: description,
+    manipulators: manipulators
+  };
+}
+
+export function chordManipulator(
+  description: string,
+  keys: KeyCode[],
+  to: KeyCode,
+  toModifiers: ModifiersKeys[] = []
+): Manipulator {
+  return {
+    description: description,
+    from: {
+      simultaneous: keys.map((key) => ({ key_code: key })),
+      modifiers: {
+        optional: ["any"],
+      },
+    },
+    to: [{
+      key_code: to,
+      modifiers: toModifiers
+    }],
+    type: "basic",
+  };
+}
+
 
 /**
  * Create a Hyper Key sublayer, where every command is prefixed with a key
