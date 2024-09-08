@@ -1,14 +1,12 @@
 import fs from "fs";
 import { Rule } from "./types";
 import { createHyperSubLayers, app, open, rectangle, shell, karabinerRule, chordManipulator } from "./utils";
-import { hyperKeyRule } from "./rules/hyperKey";
+import { hyperKeyRules } from "./rules/hyperKey";
 import { chordRules } from "./rules/chordRules";
-import { layerRules } from "./rules/layerRules";
 
-const rules: Rule[] = [
-  hyperKeyRule,
+export const rules: Rule[] = [
+  ...hyperKeyRules,
   ...chordRules,
-  ...layerRules,
 ];
 
 fs.writeFileSync(

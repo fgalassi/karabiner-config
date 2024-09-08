@@ -42,6 +42,34 @@ export function chordManipulator(
   };
 }
 
+export function hyperKeyManipulator(
+  description: string,
+  key: KeyCode,
+  to: KeyCode,
+  toModifiers: ModifiersKeys[] = []
+): Manipulator {
+  return {
+    description: description,
+    type: "basic",
+    from: {
+      key_code: key,
+      modifiers: {
+        optional: ["any"]
+      }
+    },
+    to: [{
+      key_code: to,
+      modifiers: toModifiers
+    }],
+    conditions: [
+      {
+        type: "variable_if",
+        name: "hyper",
+        value: 1
+      }
+    ]
+  };
+}
 
 /**
  * Create a Hyper Key sublayer, where every command is prefixed with a key

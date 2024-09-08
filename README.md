@@ -5,6 +5,11 @@ This is a fork of [mxstbr's karabiner](https://github.com/mxstbr/karabiner) that
 ## Current Rules
 
 - Hyper Key (⌃⌥⇧⌘)
+- Hyper Key + D to Dictate with Wispr Flow
+- Hyper + HJKL to Vim Arrows
+- Hyper + M to Homerow Click
+- Hyper + / to Homerow Search
+- Hyper + , to Homerow Scroll
 - SDF JKL -> Control + Option
 - ASD KL; -> Command + Option
 - DF JK -> Control
@@ -16,7 +21,6 @@ This is a fork of [mxstbr's karabiner](https://github.com/mxstbr/karabiner) that
 - DC KM -> Shift
 - WR UO -> Delete
 - EF JI -> Escape
-- Hyper Key sublayer "v"
 
 ## Installation
 
