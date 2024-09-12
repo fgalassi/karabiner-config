@@ -71,6 +71,44 @@ export function hyperKeyManipulator(
   };
 }
 
+export function createHyperKeyManipulator(
+  description: string,
+  hyperKeyCode: KeyCode,
+  aloneKeyCode: KeyCode
+): Manipulator {
+  return {
+    description,
+    from: {
+      key_code: hyperKeyCode,
+      modifiers: {
+        optional: ["any"],
+      },
+    },
+    to: [
+      {
+        set_variable: {
+          name: "hyper",
+          value: 1,
+        },
+      },
+    ],
+    to_after_key_up: [
+      {
+        set_variable: {
+          name: "hyper",
+          value: 0,
+        },
+      },
+    ],
+    to_if_alone: [
+      {
+        key_code: aloneKeyCode,
+      },
+    ],
+    type: "basic",
+  };
+}
+
 /**
  * Create a Hyper Key sublayer, where every command is prefixed with a key
  * e.g. Hyper + O ("Open") is the "open applications" layer, I can press
