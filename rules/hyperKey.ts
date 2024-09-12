@@ -35,8 +35,8 @@ export const hyperKeyRules: Rule[] = [
       type: "basic",
     },
   ]),
-  karabinerRule("Hyper Key + D to Dictate with Wispr Flow", [
-    hyperKeyManipulator("Hyper + D -> fn", "d", "fn"),
+  karabinerRule("Hyper Key + I to Dictate with Wispr Flow", [
+    hyperKeyManipulator("Hyper + I -> fn", "i", "fn"),
   ]),
   karabinerRule("Hyper + HJKL to Vim Arrows", [
     hyperKeyManipulator("Hyper + H -> Left Arrow", "h", "left_arrow"),

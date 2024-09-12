@@ -47,13 +47,13 @@
             ]
           },
           {
-            "description": "Hyper Key + D to Dictate with Wispr Flow",
+            "description": "Hyper Key + I to Dictate with Wispr Flow",
             "manipulators": [
               {
-                "description": "Hyper + D -> fn",
+                "description": "Hyper + I -> fn",
                 "type": "basic",
                 "from": {
-                  "key_code": "d",
+                  "key_code": "i",
                   "modifiers": {
                     "optional": [
                       "any"
