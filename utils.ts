@@ -307,3 +307,17 @@ export function rectangle(name: string): LayerCommand {
 export function app(name: string): LayerCommand {
   return open(`-a '${name}.app'`);
 }
+
+export function disableManipulator(description: string, key: KeyCode): Manipulator {
+  return {
+    description: description,
+    type: "basic",
+    from: {
+      key_code: key,
+      modifiers: {
+        optional: ["any"],
+      },
+    },
+    to: [],
+  };
+}

@@ -916,6 +916,172 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "Disable Control, Option, Command, Shift keys",
+            "manipulators": [
+              {
+                "description": "Disable left_control",
+                "type": "basic",
+                "from": {
+                  "key_code": "left_control",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable right_control",
+                "type": "basic",
+                "from": {
+                  "key_code": "right_control",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable left_option",
+                "type": "basic",
+                "from": {
+                  "key_code": "left_option",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable right_option",
+                "type": "basic",
+                "from": {
+                  "key_code": "right_option",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable left_command",
+                "type": "basic",
+                "from": {
+                  "key_code": "left_command",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable right_command",
+                "type": "basic",
+                "from": {
+                  "key_code": "right_command",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable left_shift",
+                "type": "basic",
+                "from": {
+                  "key_code": "left_shift",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable right_shift",
+                "type": "basic",
+                "from": {
+                  "key_code": "right_shift",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              }
+            ]
+          },
+          {
+            "description": "Disable Arrow keys",
+            "manipulators": [
+              {
+                "description": "Disable up_arrow",
+                "type": "basic",
+                "from": {
+                  "key_code": "up_arrow",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable down_arrow",
+                "type": "basic",
+                "from": {
+                  "key_code": "down_arrow",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable left_arrow",
+                "type": "basic",
+                "from": {
+                  "key_code": "left_arrow",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              },
+              {
+                "description": "Disable right_arrow",
+                "type": "basic",
+                "from": {
+                  "key_code": "right_arrow",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": []
+              }
+            ]
           }
         ]
       }
